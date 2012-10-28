@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+    <grouponcoupons_adminhtml_index_index>
+        <reference name="content">
+            <block type="adminhtml/template" name="grouponcoupons" template="grouponcoupons/index.phtml" />
+        </reference>
+    </grouponcoupons_adminhtml_index_index>
+    <grouponcoupons_adminhtml_index_columns>
+        <reference name="content">
+            <block type="adminhtml/template" name="grouponcoupons" template="grouponcoupons/columns.phtml" />
+        </reference>
+    </grouponcoupons_adminhtml_index_columns>
+</layout>

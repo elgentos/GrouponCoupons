@@ -1,0 +1,26 @@
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Groupon Coupons Import'); ?></h3></td>
+            <td class="a-right">
+                <button onclick='indexForm.submit()' class="scalable save" type="button"><span><?php echo $this->__('Choose columns'); ?></span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form id="index_form" name="index_form" method="post" enctype="multipart/form-data" action="<?php echo $this->getUrl('*/*/columns'); ?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <div class="entry-edit">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Upload file'); ?></h4>
+            <fieldset id="my-fieldset">
+                <ul>
+                    <li><?php echo $this->__('File'); ?> <input type="file" name="csvFile" /></li>
+                </ul>
+            </fieldset>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var indexForm = new varienForm('index_form');
+</script>

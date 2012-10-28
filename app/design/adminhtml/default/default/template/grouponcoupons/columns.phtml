@@ -1,0 +1,53 @@
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Groupon Coupons Import'); ?></h3></td>
+            <td class="a-right">
+                <button onclick='indexForm.submit()' class="scalable save" type="button"><span><?php echo $this->__('Import coupons'); ?></span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form id="index_form" name="index_form" method="post" enctype="multipart/form-data" action="<?php echo $this->getUrl('*/*/upload'); ?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <div class="entry-edit">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Choose columns'); ?></h4>
+            <fieldset id="my-fieldset">
+                <?php $headers = Mage::getModel('core/session')->getHeaders(); ?>
+                <table>
+                    <tr>
+                        <th><?php echo $this->__('Field'); ?></th><th><?php echo $this->__('Mapping'); ?></th>
+                    </tr>
+                    <tr>
+                        <td style="padding-right:20px;"><?php echo $this->__('Coupon code'); ?></td><td><select name="codeKey"><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'code')!==false || stripos($header,$this->__('Coupon code'))!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Value'); ?></td><td><select name="valueKey"><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'value')!==false || stripos($header,'amount')!==false || stripos($header,$this->__('Value'))!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Uses per customer'); ?></td><td><select name="usesCustomerKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'customer')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Uses per coupon'); ?></td><td><select name="usesCouponKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'coupon')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Valid from'); ?></td><td><select name="validFromKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'from')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Valid until'); ?></td><td><select name="validToKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'to')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Priority'); ?></td><td><select name="priorityKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'prio')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $this->__('Description'); ?></td><td><select name="descriptionKey"><option value="NA"><?php echo $this->__('Not applicable'); ?></option><?php foreach($headers as $key=>$header) { ?><option value="<?php echo $key; ?>"<?php if(stripos($header,'descri')!==false) {?> selected="selected"<?php }?>><?php echo $header; ?></option><?php }?></select></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var indexForm = new varienForm('index_form');
+</script>
